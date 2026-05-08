@@ -1,6 +1,3 @@
-install.packages("BiocManager")
-BiocManager::install("DESeq2")
-
 library(DESeq2)
 
 data <- read.table(
@@ -24,8 +21,18 @@ por ahora está vacía (solo nombres)
 Porque DESeq2 normalmente usa info experimental (condición, tiempo, etc.), pero nosotros ahora solo queremos normalizar, así que usamos lo mínimo.
 "
 
+keep <- rowSums(data) >= 100
+data_filtered <- data[keep, ]
+
+"👉 Qué hace    
+    Filtra genes con baja expresión
+    Mantiene genes con al menos 100 lecturas en total por fila
+    Esto mejora la calidad del análisis al eliminar ruido
+    "
+
+
 dds <- DESeqDataSetFromMatrix(
-  countData = data,
+  countData = data_filtered,
   colData = colData,
   design = ~ 1
 )
@@ -93,5 +100,3 @@ write.table(
   sep="\t",
   quote=FALSE
 )
-
-dim(data_filtered)
