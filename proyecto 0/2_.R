@@ -129,6 +129,11 @@ plotDendroAndColors(
     Puedes ajustar parámetros como hang y addGuide para mejorar la visualización según tus datos
     "
 
+
+table(dynamicColors)
+
+  "numero de genes por modulo"
+
 MEList <- moduleEigengenes(
   datExpr,
   colors = dynamicColors
@@ -152,6 +157,19 @@ MEs <- MEList$eigengenes
     resumir la información de cada módulo en un solo vector que se puede analizar más fácilmente
     "
 
+# ============================================
+# 📊 ANÁLISIS COMPLETO DEL DATASET DE MEs
+# ============================================
 
-head(MEs)
+cat("\n========== DIMENSIONES DEL DATASET ==========\n")
+cat("Número de muestras:", nrow(MEs), "\n")
+cat("Número de módulos:", ncol(MEs), "\n\n")
 
+cat("========== PRIMERAS 10 MUESTRAS ==========\n")
+print(head(MEs, 10))
+
+cat("\n========== ÚLTIMAS 10 MUESTRAS ==========\n")
+print(tail(MEs, 10))
+
+cat("\n========== ESTADÍSTICAS DESCRIPTIVAS POR MÓDULO ==========\n")
+summary(MEs)
