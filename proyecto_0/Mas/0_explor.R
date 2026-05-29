@@ -5,9 +5,15 @@ row.names=1,
 sep="\t"
 )
 
+head(rownames(data))
+
+
 dim(data)
 
-head(data)
+head(rownames(data),20)
 
-colSums(data)     # tamaño de librería
-summary(data)     # distribución
+colnames(data)
+
+
+
+

@@ -156,20 +156,3 @@ MEs <- MEList$eigengenes
     La función moduleEigengenes es una parte crucial del análisis WGCNA, ya que proporciona una forma de
     resumir la información de cada módulo en un solo vector que se puede analizar más fácilmente
     "
-
-# ============================================
-# 📊 ANÁLISIS COMPLETO DEL DATASET DE MEs
-# ============================================
-
-cat("\n========== DIMENSIONES DEL DATASET ==========\n")
-cat("Número de muestras:", nrow(MEs), "\n")
-cat("Número de módulos:", ncol(MEs), "\n\n")
-
-cat("========== PRIMERAS 10 MUESTRAS ==========\n")
-print(head(MEs, 10))
-
-cat("\n========== ÚLTIMAS 10 MUESTRAS ==========\n")
-print(tail(MEs, 10))
-
-cat("\n========== ESTADÍSTICAS DESCRIPTIVAS POR MÓDULO ==========\n")
-summary(MEs)

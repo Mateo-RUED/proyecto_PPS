@@ -95,8 +95,9 @@ datExpr <- t(datExpr)
 
 
 write.table(
-  datExpr,
-  "e:/Uni/ZZ PPS/proy/tabla_conteo/GSE43163_CompleteCountTable_Bgh_normalized.txt",
-  sep="\t",
-  quote=FALSE
+datExpr,
+"e:/Uni/ZZ PPS/proy/tabla_conteo/GSE43163_CompleteCountTable_Bgh_normalized.txt",
+sep="\t",
+quote=FALSE
 )
+
