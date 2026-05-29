@@ -49,3 +49,5 @@ purpleGenes <- colnames(datExpr)[dynamicColors == "purple"]
 
 head(purpleGenes, 46)
 
+table(dynamicColors)
+

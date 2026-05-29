@@ -31,7 +31,7 @@ sft <- pickSoftThreshold(
     En general, buscas una potencia donde el índice de escala libre sea alto (cercano a 0.8) y la media de conectividad no sea demasiado baja
     "
 
-softPower <- 4
+softPower <- 5
 
 adjacency_matrix <- adjacency(
   datExpr,
