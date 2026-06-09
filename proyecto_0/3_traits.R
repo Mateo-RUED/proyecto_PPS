@@ -46,9 +46,3 @@ head (moduleTraitPvalue, 10)
 
 head(colnames(datExpr))
 
-
-purpleGenes <- colnames(datExpr)[dynamicColors == "purple"]
-
-head(purpleGenes, 46)
-
-

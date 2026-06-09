@@ -1,5 +1,3 @@
-
-
 kME <- signedKME(datExpr, MEs)
 
 # 👉 Qué hace:
@@ -20,7 +18,7 @@ kME <- signedKME(datExpr, MEs)
 # bgh00002     0.83      0.10        0.03
 # ...
 
-purple_kME <- kME[dynamicColors == "purple", ]
+purpleGenes <- kME[dynamicColors == "purple", ]
 
 # 👉 Qué hace:
 # Conserva únicamente los genes que fueron asignados
@@ -30,8 +28,8 @@ purple_kME <- kME[dynamicColors == "purple", ]
 # Una tabla con los genes purple y sus kME
 # respecto a TODOS los módulos.
 
-purple_kME <- purple_kME[
-  order(-purple_kME$kMEpurple),
+purpleGenes <- purpleGenes[
+  order(-purpleGenes$kMEpurple),
 ]
 
 # 👉 Qué hace:
@@ -42,7 +40,7 @@ purple_kME <- purple_kME[
 # a hub genes del módulo.
 
 
-head(purple_kME, 10)
+head(purpleGenes, 10)
 
 # 👉 Qué hace:
 # Muestra los 10 genes con mayor kMEpurple.
@@ -54,7 +52,7 @@ head(purple_kME, 10)
 # Ver distribución de centralidad del módulo
 ############################################################
 
-hist(purple_kME$kMEpurple)
+hist(purpleGenes$kMEpurple)
 
 # 👉 Qué hace:
 # Muestra cómo se distribuyen los valores de kME.
@@ -63,7 +61,7 @@ hist(purple_kME$kMEpurple)
 # - Si existen unos pocos hubs muy fuertes.
 # - O si todos los genes tienen conectividades similares.
 
-count(purple_kME$kMEpurple > 0.9)
+count(purpleGenes$kMEpurple > 0.9)
 
 # 👉 Qué hace:
 # Cuenta cuántos genes tienen kME superior a 0.9.
@@ -72,8 +70,8 @@ count(purple_kME$kMEpurple > 0.9)
 
 
 purpleHubs <- data.frame(
-  Gene = rownames(purple_kME),
-  kME = purple_kME$kMEpurple
+  Gene = rownames(purpleGenes),
+  kME = purpleGenes$kMEpurple
 )
 
 # 👉 Qué hace:
@@ -102,11 +100,12 @@ GS.K1 <- as.data.frame(
 
 colnames(GS.K1) <- "GS.K1"
 
+
 GS.purple <- GS.K1[dynamicColors == "purple", , drop = FALSE]
 
 purpleSummary <- data.frame(
-  Gene = rownames(purple_kME),
-  kME = purple_kME$kMEpurple,
+  Gene = rownames(purpleGenes),
+  kME = purpleGenes$kMEpurple,
   GS = GS.purple$GS.K1
 )
 
@@ -137,20 +136,6 @@ dev.off()
 top20 <- head(purpleSummary, 20)
 
 top20
-
-write.table(
-  top20,
-  "proyecto_0/tabla_conteo/Top20_Purple_Hubs.txt",
-  sep = "\t",
-  quote = FALSE,
-  row.names = FALSE
-)
-
-nombre_genes <- top20$Gene
-
-nombre_genes
-
-
 
 
 ##Se identificó un módulo purple altamente asociado con K1 (r≈0.91).
