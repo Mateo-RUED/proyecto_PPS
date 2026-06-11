@@ -120,7 +120,7 @@ purpleSummary <- purpleSummary[
   order(-purpleSummary$Score),
 ]
 
-head(purpleSummary,20)
+head(purpleSummary$Gene, 49)
 
 png(filename = "proyecto_0/imagenes/purple_kME_GS.png", width = 1600, height = 900, res = 150)
 plot(
