@@ -19,7 +19,9 @@ genes_info <- read_excel(
   )
 )
 
+
 colnames(genes_info)[1] <- "Gene_ID"
+
 
 bp_col <- which(
   str_detect(
@@ -81,77 +83,38 @@ TERM2NAME <- TERM2GENE %>%
 
 head(TERM2GENE)
 
+############################################################
+# 2. Molecular_Function
+############################################################
 
-genes_purple <- genes_info %>%
-  filter(Modulo == "purple") %>%
-  pull(Gene_ID)
-
-length(genes_purple)
-
-
-sum(genes_purple %in% TERM2GENE$GENE)
-
-universo <- unique(TERM2GENE$GENE)
-
-length(universo)
-
-
-library(clusterProfiler)
-
-GO_purple <- enricher(
+TERM2GENE_MF <- genes_info %>%
   
-  gene = genes_purple,
+  select(
+    Gene_ID,
+    Molecular_Function
+  ) %>%
   
-  universe = universo,
+  drop_na(
+    Molecular_Function
+  ) %>%
   
-  TERM2GENE = TERM2GENE,
+  separate_rows(
+    Molecular_Function,
+    sep=";"
+  ) %>%
   
-  pvalueCutoff = 0.05,
+  mutate(
+    Molecular_Function = trimws(Molecular_Function)
+  ) %>%
   
-  pAdjustMethod = "BH",
-  
-  minGSSize = 3,
-  
-  maxGSSize = 500
-)
-
-GO_results <- as.data.frame(GO_purple)
-
-head(
-  GO_results,
-  20
-)
-
-
-purple_GO <- TERM2GENE %>%
   filter(
-    GENE %in% genes_purple
-  )
+    Molecular_Function != ""
+  ) %>%
+  
+  select(
+    TERM = Molecular_Function,
+    GENE = Gene_ID
+  ) %>%
+  
+  distinct()
 
-head(purple_GO,20)
-
-GO_purple_exploratorio <- enricher(
-  
-  gene = genes_purple,
-  
-  universe = universo,
-  
-  TERM2GENE = TERM2GENE,
-  
-  pvalueCutoff = 1,
-  
-  minGSSize = 1,
-  
-  maxGSSize = 500
-)
-
-GO_exploratorio <- as.data.frame(
-  GO_purple_exploratorio
-)
-
-head(
-  GO_exploratorio,
-  20
-)
-
-table(purple_GO$TERM) %>% sort(decreasing = TRUE) %>% head(20)
