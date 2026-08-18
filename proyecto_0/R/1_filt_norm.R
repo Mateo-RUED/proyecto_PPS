@@ -1,7 +1,7 @@
 library(DESeq2)
 
 data <- read.table(
-"proyecto_0/tabla_conteo/GSE43163_CompleteCountTable_Bgh.txt",
+"proyecto_0/Data/Raw/GSE43163_CompleteCountTable_Bgh.txt",
 header=TRUE,
 row.names=1,
 sep="\t"
@@ -96,7 +96,7 @@ datExpr <- t(datExpr)
 
 write.table(
 datExpr,
-"e:/Uni/ZZ PPS/proy/tabla_conteo/GSE43163_CompleteCountTable_Bgh_normalized.txt",
+"e:/Uni/ZZ PPS/proy/proyecto_0/Data/Processed/GSE43163_CompleteCountTable_Bgh_normalized.txt",
 sep="\t",
 quote=FALSE
 )

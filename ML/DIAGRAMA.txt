@@ -1,0 +1,43 @@
+RNA-seq
+      │
+      ▼
+Normalización (DESeq2 + VST)
+      │
+      ▼
+WGCNA
+      │
+      ▼
+Identificación del módulo purple
+(asociado con K1)
+      │
+      ▼
+48 genes candidatos
+      │
+      └────┬
+             │
+             ▼
+ Machine Learning
+(Bootstrap estratificado)
+             │
+      ┌──────┼──────┐
+      ▼      ▼      ▼
+     RF    LASSO  SVM-RFE
+      │      │      │
+      └──────┼──────┘
+             ▼
+ Relevancia predictiva
+ (estabilidad + consenso)
+             │
+             ▼
+ Integración de evidencias
+             │
+             ▼
+ Biomarcadores candidatos
+
+
+
+
+
+
+
+

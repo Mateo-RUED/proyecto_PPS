@@ -32,6 +32,7 @@ purpleGenes <- purpleGenes[
   order(-purpleGenes$kMEpurple),
 ]
 
+
 # 👉 Qué hace:
 # Ordena los genes desde el más conectado
 # al menos conectado dentro del módulo purple.
@@ -53,7 +54,6 @@ head(purpleGenes, 10)
 ############################################################
 
 hist(purpleGenes$kMEpurple)
-
 # 👉 Qué hace:
 # Muestra cómo se distribuyen los valores de kME.
 #
@@ -122,7 +122,6 @@ purpleSummary <- purpleSummary[
 
 head(purpleSummary$Gene, 49)
 
-png(filename = "proyecto_0/imagenes/purple_kME_GS.png", width = 1600, height = 900, res = 150)
 plot(
   abs(purpleSummary$GS),
   abs(purpleSummary$kME),
@@ -130,8 +129,8 @@ plot(
   ylab = "Module Membership (purple)",
   pch = 16
 )
-dev.off()
 
+head(purpleSummary, 20)
 
 top20 <- head(purpleSummary, 20)
 

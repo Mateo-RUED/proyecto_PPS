@@ -1,9 +1,8 @@
-install.packages("readxl")
 
 library(readxl)
 
 annotations <- read_excel(
-  "Gene_description_con_Modulos.xlsx"
+  "proyecto_0/Data/Annotations/Gene_description_con_Modulos.xlsx"
 )
 
 
@@ -22,6 +21,8 @@ purpleAnnotated <- merge(
   by.y = "Gene_ID",
   all.x = TRUE
 )
+
+head(purpleSummary, 10)
 
 # table(dynamicColors)
 

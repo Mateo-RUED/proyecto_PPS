@@ -43,6 +43,5 @@ moduleTraitPvalue <- corPvalueStudent(
 
 head (moduleTraitPvalue, 10)
 
-
 head(colnames(datExpr))
 
