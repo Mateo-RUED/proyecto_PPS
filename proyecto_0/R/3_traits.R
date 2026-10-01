@@ -23,6 +23,13 @@ moduleTraitCor <- cor(
 
 head (moduleTraitCor, 10)
 
+png(
+  filename = "module_trait_correlation_heatmap.png",
+  width = 1600,
+  height = 800,
+  res = 150
+)
+par(mar = c(5, 18, 3, 3), xpd = NA)
 labeledHeatmap(
   Matrix = moduleTraitCor,
   xLabels = c("B12", "K1", "time", "Interaction"),
@@ -33,8 +40,10 @@ labeledHeatmap(
   textMatrix = signif(moduleTraitCor, 2),
   setStdMargins = FALSE,
   cex.text = 0.7,
-  zlim = c(-1,1)
+  zlim = c(-1, 1)
 )
+dev.off()
+
 
 moduleTraitPvalue <- corPvalueStudent(
   moduleTraitCor,

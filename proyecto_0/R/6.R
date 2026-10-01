@@ -155,3 +155,5 @@ head(
 )
 
 table(purple_GO$TERM) %>% sort(decreasing = TRUE) %>% head(20)
+
+
